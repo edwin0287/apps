@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from events.models import Event
+from datetime import datetime
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, name, password=None):
         if not email:
@@ -57,3 +58,4 @@ class UserAccountEvent(models.Model):
         on_delete=models.CASCADE,
         blank=True, null=True
     )
+    date_created = models.DateTimeField(default=datetime.now, blank=True)

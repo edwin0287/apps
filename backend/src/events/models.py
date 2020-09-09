@@ -7,6 +7,7 @@ class Event(models.Model):
     content= models.TextField()
     date_event = models.DateTimeField(blank=True,null=True)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
+    costo = models.DecimalField(max_digits=5, decimal_places=2,null=True)
 
     def __str__(self):
         return self.title

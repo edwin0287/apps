@@ -18,13 +18,12 @@ const Articles = (props)=>{
 
     const [comprar, setComprar] = useState(false);
 
+    const [userid, setUserid]   = useState(0);
+
     const showModal = (id) => {
         setEventid(id);
-        console.log(eventid);
-       
-        const state = store.getState();
-        console.log(state.auth.user);
-
+        const state= store.getState();
+        setUserid(state.auth.user.id);
         setVisible(true);
       }
 
@@ -68,7 +67,7 @@ const Articles = (props)=>{
                                 <p><strong>{item.date_event}</strong></p> 
                         </Col>
                         <Col className="gutter-row" span={8}>         
-                                <p><h2>USD. 10.00</h2></p>
+                                <p><h2>USD. {item.costo}</h2></p>
                                 <p><button  onClick={() => showModal(item.id)} type="button" className="btn btn-primary">
                                     COMPRAR TICKET
                                     </button>
@@ -85,7 +84,7 @@ const Articles = (props)=>{
                 okText="Comprar"
                 cancelText="Cancelar"
             > 
-                <p><center>{eventid} Para hacer válida su compra click en <strong>comprar</strong></center></p>
+                <p><center>IdUsuario:{userid} IDEvento:{eventid} Para hacer válida su compra click en <strong>comprar</strong></center></p>
             </Modal>
         </>
     );
