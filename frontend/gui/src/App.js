@@ -11,6 +11,8 @@ import List from './containers/ArticleListView';
 
 import ListDetail from './containers/ArticleDetailView';
 
+import TicketList from './containers/TicketListView';
+
 import Compra from './containers/compra';
 
 import { Provider } from 'react-redux';
@@ -30,6 +32,7 @@ const App = () => (
                     <Route exact path='/compra' component={Compra}/>
                     <Route exact path='/list/:id/' component={ListDetail}/>
                     <Route exact path='/demo' component={demo} />
+                    <Route exact path='/ticket' component={TicketList} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={Signup} />
                     <Route exact path='/reset_password' component={ResetPassword} />

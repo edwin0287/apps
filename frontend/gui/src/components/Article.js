@@ -3,6 +3,7 @@ import { List,Space, Col,Button} from 'antd';
 import { Redirect } from 'react-router-dom';
 import Modal from 'antd/lib/modal/Modal';
 import store from '../store';
+import axios from 'axios';
 
 const IconText = ({ icon, text }) => (
     <Space>
@@ -10,6 +11,28 @@ const IconText = ({ icon, text }) => (
       {text}
     </Space>
   );
+
+  const fetchTicket = async (idsr,idev) =>{
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ User_id: idsr, event_id:idev}); 
+
+    try{
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/ticket/`, body, config);
+        console.log(res);
+    
+    } catch(err){
+
+    }
+}
+
 const Articles = (props)=>{
 
     const [visible, setVisible] = useState(false);
@@ -20,6 +43,7 @@ const Articles = (props)=>{
 
     const [userid, setUserid]   = useState(0);
 
+   
     const showModal = (id) => {
         setEventid(id);
         const state= store.getState();
@@ -29,6 +53,7 @@ const Articles = (props)=>{
 
     const okModal = e => {
         setComprar(true);
+        fetchTicket(userid,eventid);
       }
     
     
