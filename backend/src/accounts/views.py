@@ -4,12 +4,10 @@ from rest_framework import generics
 
 from .serializers import UserAcctEvSerializar
 
-from .models import UserAccountEvent
+from .models import UserAccountEvent,UserAccount
 
 
 from rest_framework.permissions import IsAuthenticated
-
-# Create your views here.
 
 class UserEventCreate (generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
@@ -23,8 +21,18 @@ class UserEventList (generics.RetrieveUpdateDestroyAPIView):
 
 class TicketListView(generics.ListAPIView):
     #permission_classes = (IsAuthenticated,)
-    queryset = UserAccountEvent.objects.all()
     serializer_class = UserAcctEvSerializar
+    def get_queryset(self):
+        urs_id = self.kwargs['User_id']
+        tk = UserAccountEvent.objects.filter(User_id__exact=urs_id)
+        lista=[]
+        for k in tk:
+            print(k)
+            lista.append(k)
+        return lista#UserAccountEvent.objects.filter(User_id__exact=urs_id)
+
+    
+
 
 
 
