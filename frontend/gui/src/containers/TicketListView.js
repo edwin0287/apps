@@ -16,10 +16,10 @@ const TicketList =(props) =>{
                 'Accept': 'application/json'
             }
          };
-          const userID = props.auth.user.id;
           const fetchticket = async () => {
+              const userID = props.auth.user.id;
               try{
-                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/ticket/list/${userID}`, config);
+                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/ticket/event/${userID}`, config);
                  setTicket(res.data);
               }
               catch(err){

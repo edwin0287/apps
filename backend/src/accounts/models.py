@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from events.models import Event
 from datetime import datetime
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, name, password=None):
@@ -33,8 +32,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     
     objects = UserAccountManager()
 
-    eventos= models.ManyToManyField(Event,through="UserAccountEvent")# para la llave foránea
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
@@ -47,15 +44,3 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-class UserAccountEvent(models.Model):
-    User_id = models.ForeignKey(
-        UserAccount, 
-        on_delete=models.CASCADE,
-        blank=True, null=True
-    )
-    event_id = models.ForeignKey(
-        Event, 
-        on_delete=models.CASCADE,
-        blank=True, null=True
-    )
-    date_created = models.DateTimeField(default=datetime.now, blank=True)

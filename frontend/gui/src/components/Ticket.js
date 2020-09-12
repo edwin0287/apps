@@ -17,11 +17,14 @@ const Ticket = (props)=>{
             renderItem={item => (
                 <List.Item>
                         <Col className="gutter-row" span={8}>          
-                                <p>Id del usuario {item.User_id}</p>
+                        <p>{item.title}</p>   
+                        <p><strong>{item.date_event}</strong></p>                    
                         </Col>
                         <Col className="gutter-row" span={8}>         
-                                <p>Id del Evento  {item.event_id}</p>
-
+                        <p>{item.content}</p>
+                        </Col>  
+                        <Col className="gutter-row" span={8}>         
+                        <p><strong>USD. {item.costo}</strong></p>
                         </Col>  
                </List.Item>
             )}

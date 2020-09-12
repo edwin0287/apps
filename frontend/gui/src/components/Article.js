@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import { List,Space, Col,Button} from 'antd';
-import { Redirect } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import Modal from 'antd/lib/modal/Modal';
 import store from '../store';
 import axios from 'axios';
@@ -25,7 +25,7 @@ const IconText = ({ icon, text }) => (
     const body = JSON.stringify({ User_id: idsr, event_id:idev}); 
 
     try{
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/ticket/`, body, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/ticket/`, body, config);
         console.log(res);
     
     } catch(err){
@@ -87,7 +87,7 @@ const Articles = (props)=>{
                                 /> 
                         </Col>
                         <Col className="gutter-row" span={8}>          
-                                <p>{<a href={`list/${item.id}`}>{item.title}</a>}</p>
+                                <p>{<Link to={`list/${item.id}`}>{item.title}</Link>}</p>
                                 <p>{item.content}</p>
                                 <p><strong>{item.date_event}</strong></p> 
                         </Col>

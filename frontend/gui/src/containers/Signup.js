@@ -85,7 +85,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                 <button className='btn btn-primary' type='submit'>Registrarse</button>
             </form>
             <p className='mt-3'>
-                Ya tienes una cuenta? <Link to='/login'>Regístrate</Link>
+                Ya tienes una cuenta? <Link to='/login'>Inicia Sesión</Link>
             </p>
         </div>
     );
