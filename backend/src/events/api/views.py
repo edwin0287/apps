@@ -54,7 +54,7 @@ class TicketEventListView(ListAPIView):
     def get_queryset(self):
         id= self.kwargs['User_id']
         user=UserAccount.objects.get(pk=id)
-        return user.event_set.all()
+        return user.event_set.all().order_by('date_event')
 
 
 class TicketRelaListView(ListAPIView):
