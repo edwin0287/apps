@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Articles  from '../components/Article'; 
+import Events  from '../components/Events'; 
 //librería para la obtención de datos
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -23,16 +23,16 @@ const authAxios= axios.create({
 
 });*/
 
-const ArticleList =(props) =>{
+const EventList =(props) =>{
     //inicio de metodos de axios para la obtención de los datos
     const [event,setEvent]= useState([]);
+    const [auth, setAuth] = useState(false);
     console.log(props.isAuthenticated);
     //console.log(localStorage.getItem('access'));
     useEffect(() =>{
           const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('access')}`,
                 'Accept': 'application/json'
             }
          };
@@ -45,16 +45,17 @@ const ArticleList =(props) =>{
 
               }
           }
+          fetchEvent();
           if (props.isAuthenticated){
-            fetchEvent();
+            setAuth(true);
           }
     },[]);
-        return(<Articles data={event}/>);
+        return(<Events data={event} authen={auth}/>);
        
 };
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-//export default ArticleList;
-export default connect(mapStateToProps)(ArticleList);
+//export default EventList;
+export default connect(mapStateToProps)(EventList);

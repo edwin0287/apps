@@ -1,0 +1,3 @@
+una lista de los eventos futuros.
+descripcion de los eventos,
+le da click al comprar evento,y cuando le da click como que ya puede entrar a ese evento

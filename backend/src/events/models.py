@@ -5,10 +5,12 @@ from accounts.models import UserAccount
 # Create your models here.
 class Event(models.Model):
     title = models.CharField(max_length=120)
-    content= models.TextField()
+    description= models.CharField(max_length=120,blank=True,null=True)
+    content= models.TextField(blank=True,null=True)
     date_event = models.DateTimeField(blank=True,null=True)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
     costo = models.DecimalField(max_digits=5, decimal_places=2,null=True)
+    url =  models.CharField(max_length=2048,null= True)
     accounts= models.ManyToManyField(UserAccount,through="UserAccountEvent")# para la llave foránea
     def __str__(self):
         return self.title

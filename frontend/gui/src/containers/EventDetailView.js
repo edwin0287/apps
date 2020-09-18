@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card } from 'antd';
 import { connect } from 'react-redux';
 
-const  ArticleDetail =(props) =>{
+const  EventDetail =(props) =>{
 
     const [event,setEvent]= useState({});
    
@@ -46,4 +46,4 @@ const mapStateToProps = state => ({
   });
   
 
-export default connect(mapStateToProps)(ArticleDetail);
+export default connect(mapStateToProps)(EventDetail);

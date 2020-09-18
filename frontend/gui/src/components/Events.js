@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
-import { List,Space, Col,Button} from 'antd';
-import { Link,Redirect } from 'react-router-dom';
+import { List,Space, Col,Button,Card} from 'antd';
+import { Link,useHistory } from 'react-router-dom';
 import Modal from 'antd/lib/modal/Modal';
 import store from '../store';
 import axios from 'axios';
@@ -33,7 +33,7 @@ const IconText = ({ icon, text }) => (
     }
 }
 
-const Articles = (props)=>{
+const Events = (props)=>{
 
     const [visible, setVisible] = useState(false);
     
@@ -43,12 +43,22 @@ const Articles = (props)=>{
 
     const [userid, setUserid]   = useState(0);
 
-   
+    const state= store.getState();
+
+    const validlog=props.authen;
+
+    let history = useHistory();
+  
     const showModal = (id) => {
-        setEventid(id);
-        const state= store.getState();
-        setUserid(state.auth.user.id);
-        setVisible(true);
+        console.log(validlog)
+        if (validlog){
+            setEventid(id);
+            setUserid(state.auth.user.id);
+            setVisible(true);
+        }
+        else{
+              history.push('/login');
+        }
       }
 
     const okModal = e => {
@@ -61,43 +71,42 @@ const Articles = (props)=>{
         setVisible(false);
       }
 
-    if (comprar)
-        return <Redirect to='/' />;
-      
     return(    
        <> 
+            <h2>CARTELERA</h2>
             <List
-                itemLayout="horizontal"
-                size="large"
+                //itemLayout="horizontal"
+                //size="large"
+                grid={{
+                    gutter: [32, 16],
+                    xs: 2,
+                    sm: 2,
+                    md: 4,
+                    lg: 4,
+                    xl: 3,
+                    xxl: 3,
+                  }}
                 pagination={{
                 onChange:(page)=> {
                     console.log(page);
                 },
-                pageSize: 2,
+                pageSize: 3,
                 }}
                 dataSource={props.data}
                 //footer={<div><b>ant design</b> footer part</div>}
                 renderItem={item => (
-                    <List.Item>  
-                        <Col className="gutter-row" span={8}>         
-                                <img
-                                    width={272}
-                                    alt="logo"
-                                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                                /> 
-                        </Col>
-                        <Col className="gutter-row" span={8}>          
-                                <p>{<Link to={`list/${item.id}`}>{item.title}</Link>}</p>
-                                <p>{item.content}</p>
-                                <p><strong>{item.date_event}</strong></p> 
-                        </Col>
-                        <Col className="gutter-row" span={8}>         
-                                <p><h2>USD. {item.costo}</h2></p>
-                                <p><button  onClick={() => showModal(item.id)} type="button" className="btn btn-primary">
+                    <List.Item>
+                            <Card>
+                              <p><h2>USD. {item.costo}</h2></p>
+                              <p>{<Link to={`list/${item.id}`}>{item.title}</Link>}</p> 
+                              <p>{item.content}</p>
+                              <p><strong>{item.date_event}</strong></p> 
+                              <p><button  onClick={() => showModal(item.id)} type="button" className="btn btn-primary">
                                     COMPRAR TICKET
                                     </button>
-                                </p> 
-                            </Col>                              
+                                </p>
+                            </Card>
+                              
                     </List.Item>
                 )}
             />
@@ -109,7 +118,7 @@ const Articles = (props)=>{
                 okText="Comprar"
                 cancelText="Cancelar"
             > 
-                <p><center>IdUsuario:{userid} IDEvento:{eventid} Para hacer válida su compra click en <strong>comprar</strong></center></p>
+                <p><center> Para hacer válida su compra click en <strong>comprar</strong></center></p>
             </Modal>
         </>
     );
@@ -119,4 +128,4 @@ const Articles = (props)=>{
     isAuthenticated: state.auth.isAuthenticated
 });
 export default connect(mapStateToProps)(Articles);*/
-export default Articles;
+export default Events;

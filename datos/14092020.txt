@@ -1,0 +1,20 @@
+-orden de los eventos comprados
+Descendentes.
+
+---el boton para el player de cada evento
+---las relaciones, con los datos de cada ticket.
+---forma.
+
+*Menú
+home,eventos,miseventos(miperfil cuando este logeado),sala(Evento en Curso, y los 2 proximos).
+
+
+home: 
+cartelera
+los 3 proximos eventos.
+
+
+*agregar a eventos categoria
+
+
+          if (props.isAuthenticated){

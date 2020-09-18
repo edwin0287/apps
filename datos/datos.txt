@@ -1,0 +1,45 @@
+TeatroWeb
+web.
+usurario de adminitrador
+-----------------------------
+crear pagina para mostrar eventos a comprar.
+-------------------------------------------
+react y django
+-------------------------------------------
+usuarios:
+admin, publico, artista.
+-------------------------------------------
+1-Iniciamos creando usuarios
+
+
+===DBname: desarrollopstdb===
+Host: desarrollopstdb.cpd0qhimwgss.us-west-2.rds.amazonaws.com
+Master User: desamaster
+Contraseña: d3Mast34.!%g1b1t$#?
+
+--------------------------------------acerca del proyecto de la página---------------------------
+https://www.youtube.com/watch?v=kh4YFQrvVyE (link donde se explica http por consola)
+para ver el proyecto.
+http http://127.0.0.1:8000/api/ "Authorization: Token bd2b05b8bf830946cb811f12d41001b73f726a04"
+
+
+
+
+
+correo temporal
+
+5bd4cd5b46@emaillab.xyz
+https://www.mohmal.com/es/inbox
+
+-----------------------------llaves foraneas en django-----------
+https://www.youtube.com/watch?v=oDeHM_SQNnM
+https://www.youtube.com/watch?v=hX8Mcj3-8hk
+
+------------------------------filtros django-----------listapiview----------------
+https://www.django-rest-framework.org/api-guide/filtering/
+
+------------------------------------haciendo relaciones entre tablas django---------------
+https://www.youtube.com/watch?v=-HuTlmEVOgU
+
+
+https://www.youtube.com/watch?v=Nb7il0Q5WoY&t=3066s

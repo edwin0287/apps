@@ -1,26 +1,23 @@
 from rest_framework.generics import ListAPIView,RetrieveAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from events.models import Event,UserAccountEvent
 from accounts.models import UserAccount
-from .serializers import EventSerializer,UserAcctEvSerializar
+from .serializers import EventSerializer,EventSummarySerializer,UserAcctEvSerializar,EventTicketSerializer
 
 from rest_framework.permissions import IsAuthenticated
 
 import datetime
 
 class EventListDateView(ListAPIView):
-    permission_classes = (IsAuthenticated,)
     nowdatetime = datetime.datetime.now()#obteniendo datetime actual
     queryset = Event.objects.order_by('date_event').filter(date_event__gte=nowdatetime)
-    serializer_class = EventSerializer
+    serializer_class = EventSummarySerializer
 
 
 class EventListView(ListAPIView):
-    permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
-    serializer_class = EventSerializer
+    serializer_class = EventSummarySerializer
    
    
-
 class EventDetailView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
@@ -60,3 +57,12 @@ class TicketEventListView(ListAPIView):
         return user.event_set.all()
 
 
+class TicketRelaListView(ListAPIView):
+     #queryset = Event.objects.all()
+     serializer_class = EventTicketSerializer
+     def get_queryset(self):
+         id= self.kwargs['User_id']
+         user=UserAccount.objects.get(pk=id)
+         query_set= user.event_set.all()
+         return query_set
+     

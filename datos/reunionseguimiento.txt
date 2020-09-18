@@ -1,0 +1,23 @@
+
+--Campos para el tiket
+fecha,costo.
+ip:despues.
+
+------------------------
+Es posible que el cliente compre mas de un tiket.
+------------------------
+Desde mis eventos:
+--poder mostrar los streaming
+
+
+-----------------------------
+mis eventos, debe tener un historico de los eventos comprados.
+
+------------------------------
+si se entra antes que aparezca un contador.
+
+
+https://correotemporal.org/
+correo:ktowner_x598t@xedmi.com
+
+contraseña:0v2v4v

@@ -47,30 +47,27 @@ const CustomLayout = (props) => {
         <Layout className="site-layout">
           <Header>
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1"><Link to="/">Inicio</Link></Menu.Item>
-                <Menu.Item key="2"><Link to="/demo">Demo</Link></Menu.Item>
-                <Menu.Item key="3"><Link to="/ticket">Comprados</Link></Menu.Item>
-                <Menu.Item key="4"><Link to="/list">list</Link></Menu.Item>
-                { 
-                    props.isAuthenticated ? 
-
-                    <Menu.Item key="5" onClick={props.logout}>Cerrar Sesión</Menu.Item> 
-                    : 
-                  
-                      <Menu.Item key="5">
-                      <Link to="/login">Iniciar Sesión</Link>
-                      </Menu.Item>
+            { 
+               props.isAuthenticated ? 
+                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                    <Menu.Item key="1"><Link to="/">Inicio</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to="/ticket">Mis Eventos</Link></Menu.Item>
+                    <Menu.Item key="4" onClick={props.logout}>Cerrar Sesión</Menu.Item> 
+                </Menu>
+              : 
+                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                      <Menu.Item key="1"><Link to="/">Inicio</Link></Menu.Item>
+                      <Menu.Item key="3"><Link to="/login">Iniciar Sesión</Link></Menu.Item>
             
-                }
-             </Menu>
+                </Menu>
+             }
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div  style={{background:"#fff",padding:24,minHeight:280}}>
+            <div  style={{background:"#fff",padding:24,minHeight:400}}>
                {props.children}
             </div>
           </Content>
