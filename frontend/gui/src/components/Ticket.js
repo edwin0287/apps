@@ -1,5 +1,5 @@
 import React from 'react';
-import { List} from 'antd';
+import { List,Avatar } from 'antd';
 import { Link,useHistory } from 'react-router-dom';
 const Ticket = (props)=>{
     let history= useHistory();
@@ -17,7 +17,6 @@ const Ticket = (props)=>{
             pageSize: 3,
             }}
             dataSource={props.data}
-            //footer={<div><b>ant design</b> footer part</div>}
             renderItem={item => (
                 <List.Item
                     key={item.title}
@@ -28,6 +27,7 @@ const Ticket = (props)=>{
                     }                
                 >
                      <List.Item.Meta
+                        avatar={<Avatar src={item.thumbnail} />}
                         title={<Link to={`list/${item.id}`}>{item.title}</Link>}
                         description={item.description}
                     />

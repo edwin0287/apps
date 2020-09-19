@@ -19,10 +19,13 @@ class EventListView(ListAPIView):
    
    
 class EventDetailView(RetrieveAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSummarySerializer
+
+class EventVideoDetailView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-
 
 #------------------------------models---------------------------
 

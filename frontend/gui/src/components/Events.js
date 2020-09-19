@@ -75,8 +75,6 @@ const Events = (props)=>{
        <> 
             <h2>CARTELERA</h2>
             <List
-                //itemLayout="horizontal"
-                //size="large"
                 grid={{
                     gutter: [32, 16],
                     xs: 2,
@@ -93,13 +91,12 @@ const Events = (props)=>{
                 pageSize: 3,
                 }}
                 dataSource={props.data}
-                //footer={<div><b>ant design</b> footer part</div>}
                 renderItem={item => (
                     <List.Item>
                             <Card>
                               <p><h2>USD. {item.costo}</h2></p>
                               <p>{<Link to={`list/${item.id}`}>{item.title}</Link>}</p> 
-                              <p>{item.content}</p>
+                              <p>{item.description}</p>
                               <p><strong>{item.date_event}</strong></p> 
                               <p><button  onClick={() => showModal(item.id)} type="button" className="btn btn-primary">
                                     COMPRAR TICKET
@@ -124,8 +121,4 @@ const Events = (props)=>{
     );
 };
 
-/*const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
-});
-export default connect(mapStateToProps)(Articles);*/
 export default Events;

@@ -26,7 +26,6 @@ const authAxios= axios.create({
 const EventList =(props) =>{
     //inicio de metodos de axios para la obtención de los datos
     const [event,setEvent]= useState([]);
-    const [auth, setAuth] = useState(false);
     console.log(props.isAuthenticated);
     //console.log(localStorage.getItem('access'));
     useEffect(() =>{
@@ -46,11 +45,9 @@ const EventList =(props) =>{
               }
           }
           fetchEvent();
-          if (props.isAuthenticated){
-            setAuth(true);
-          }
+
     },[]);
-        return(<Events data={event} authen={auth}/>);
+        return(<Events data={event} authen={props.isAuthenticated}/>);
        
 };
 const mapStateToProps = state => ({

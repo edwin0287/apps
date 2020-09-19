@@ -15,7 +15,6 @@ const  EventDetail =(props) =>{
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('access')}`,
                 'Accept': 'application/json'
             }
         };
@@ -24,6 +23,7 @@ const  EventDetail =(props) =>{
             try{
                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/${eventID}`, config);
                 setEvent(res.data);
+                console.log(event)
             }
             catch (err){
 
@@ -31,15 +31,17 @@ const  EventDetail =(props) =>{
         }
         fetchEvent();       
     },[]);
-
+    const gridStyle = {
+        width: '100%'
+      };
     return(
         <div className="site-card-wrapper">
-            <Row gutter={16}>
+            <Row gutter={32,16}>
                 <Col span={8}>
                     <Card
                         hoverable
-                        style={{ width: 240 }}
-                        cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                        style={gridStyle}
+                        cover={<img alt="example" src={event.thumbnail} />}
                         bordered={false}
                     >
                         <Meta title="Europe Street beat" description="www.instagram.com" />
@@ -50,6 +52,11 @@ const  EventDetail =(props) =>{
                         <div> Costo: USD. <strong>{event.costo}</strong></div>
                         <div>{event.description}</div>
                         <div>{event.content}</div>
+                    </Card>
+                </Col>
+                <Col span={8}>
+                    <Card title="Card title" bordered={false}>
+                       Card content
                     </Card>
                 </Col>
             </Row>

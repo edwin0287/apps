@@ -18,7 +18,7 @@ const  VideoDetail =(props) =>{
 
         const fetchEvent = async () =>{
             try{
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/${eventID}`, config);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/video/${eventID}`, config);
                 setEvent(res.data);
             }
             catch (err){

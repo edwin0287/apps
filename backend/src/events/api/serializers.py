@@ -5,12 +5,12 @@ from events.models import UserAccountEvent
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields= ('id','title','content','date_event','costo','description','url')
+        fields= ('id','title','content','date_event','costo','description','url','thumbnail')
 
 class EventSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields= ('id','title','date_event','costo','description')
+        fields= ('id','title','content','date_event','costo','description','thumbnail')
 
 class UserAcctEvSerializar(serializers.ModelSerializer):
     class Meta:
