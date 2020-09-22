@@ -36,8 +36,8 @@ const  EventDetail =(props) =>{
       };
     return(
         <div className="site-card-wrapper">
-            <Row gutter={32,16}>
-                <Col span={8}>
+            <Row gutter={[40, 16]}>
+                <Col span={12}>
                     <Card
                         hoverable
                         style={gridStyle}
@@ -47,41 +47,16 @@ const  EventDetail =(props) =>{
                         <Meta title="Europe Street beat" description="www.instagram.com" />
                     </Card>
                 </Col>
-                <Col span={8}>
+                <Col span={12}>
                     <Card title={event.title} bordered={false}>
-                        <div> Costo: USD. <strong>{event.costo}</strong></div>
+                        <div> <strong>Costo:</strong> USD.{event.costo}</div>
+                        <div> <strong>Categoría: </strong>{event.category}</div>
                         <div>{event.description}</div>
                         <div>{event.content}</div>
                     </Card>
                 </Col>
-                <Col span={8}>
-                    <Card title="Card title" bordered={false}>
-                       Card content
-                    </Card>
-                </Col>
             </Row>
         </div>
-          /*<Card >
-              <Row gutter={16}>
-                <Col className="gutter-row" span={6}>
-                  <div>
-                      <img
-                            width={272}
-                            alt="logo"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                      />
-                   </div>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                    <div><strong>{event.title}</strong></div>
-                    <div>{event.title}</div>
-                    <div>{event.description}</div>
-                    <div>{event.content}</div>
-
-                </Col>
-
-              </Row>
-            </Card>*/
 
        );
    

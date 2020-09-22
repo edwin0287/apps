@@ -31,7 +31,7 @@ const Ticket = (props)=>{
                         title={<Link to={`list/${item.id}`}>{item.title}</Link>}
                         description={item.description}
                     />
-                    <p><strong>{item.date_event}</strong></p> 
+                    <p><strong>Fecha del Evento:</strong>{item.date_event}</p> 
                </List.Item>
             )}
         />

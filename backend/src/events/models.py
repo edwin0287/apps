@@ -3,10 +3,19 @@ from datetime import datetime
 
 from accounts.models import UserAccount
 # Create your models here.
+
+class Categories(models.TextChoices):
+        DRAMA = 'drama'
+        MUSICA = 'musica'
+        CULTURAL = 'cultura'
+        COVERS = 'covers'
+        
+
 class Event(models.Model):
     title = models.CharField(max_length=120)
     description= models.CharField(max_length=120,blank=True,null=True)
     content= models.TextField(blank=True,null=True)
+    category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.MUSICA)
     date_event = models.DateTimeField(blank=True,null=True)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
     costo = models.DecimalField(max_digits=5, decimal_places=2,null=True)
@@ -27,4 +36,4 @@ class UserAccountEvent(models.Model):
         on_delete=models.CASCADE,
         blank=True, null=True
     )
-    date_created = models.DateTimeField(default=datetime.now, blank=True)
+    date_created = models.DateTimeField(default=datetime.now,blank=True)
