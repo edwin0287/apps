@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 const  EventDetail =(props) =>{
 
     const [event,setEvent]= useState({});
-   
-    console.log(props);
+
     const { Meta } = Card;
     
     useEffect(() => {     
@@ -23,7 +22,6 @@ const  EventDetail =(props) =>{
             try{
                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/${eventID}`, config);
                 setEvent(res.data);
-                console.log(event)
             }
             catch (err){
 
@@ -48,8 +46,8 @@ const  EventDetail =(props) =>{
                     </Card>
                 </Col>
                 <Col span={12}>
-                    <Card title={event.title} bordered={false}>
-                        <div> <strong>Costo:</strong> USD.{event.costo}</div>
+                    <Card hoverable bordered={false}>
+                        <div> <strong><h2>{event.title}</h2></strong>  <strong><h2> USD.{event.costo}</h2></strong> </div> 
                         <div> <strong>Categoría: </strong>{event.category}</div>
                         <div>{event.description}</div>
                         <div>{event.content}</div>

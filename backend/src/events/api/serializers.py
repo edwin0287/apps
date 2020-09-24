@@ -1,12 +1,20 @@
 from rest_framework import serializers
 from events.models import Event
 from events.models import UserAccountEvent
+from django.db.models import Count
 
 class EventSerializer(serializers.ModelSerializer):
+    count = serializers.IntegerField()
+    thumbnail= serializers.CharField()
+    class Meta:
+        model = Event
+        fields= ('id','title','content','date_created','date_event','costo','description','url','thumbnail','category','count')
+    
+class EventVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields= ('id','title','content','date_event','costo','description','url','thumbnail','category')
-
+ 
 class EventSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Event

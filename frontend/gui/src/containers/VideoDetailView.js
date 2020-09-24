@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
+import { Row, Col } from 'antd';
 
 const  VideoDetail =(props) =>{
 
@@ -29,7 +30,9 @@ const  VideoDetail =(props) =>{
     },[]);
     //'https://8343f7014c0ea438.mediapackage.us-west-2.amazonaws.com/out/v1/4cf229936cad426c9edca62e52fb8da9/index.m3u8' 
     return(
-        <div style={{padding:24,minHeight:500}}>
+        <div align-items= "center">
+             <Row justify="center">
+                <Col span={24} offset={2}>
                         <h4>{event.title}</h4>
                         <ReactPlayer controls url={event.url} 
                          playing
@@ -40,6 +43,8 @@ const  VideoDetail =(props) =>{
                          onPause = {()=> console.log('onPause callback')}
                          onEnded = {()=> console.log('onEnded callback')}
                          onError = {()=> console.log('onError callback')}/>
+                </Col>
+             </Row>
         </div>
 
        );

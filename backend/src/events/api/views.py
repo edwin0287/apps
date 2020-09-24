@@ -1,12 +1,13 @@
 from rest_framework.generics import ListAPIView,RetrieveAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from events.models import Event,UserAccountEvent
 from accounts.models import UserAccount
-from .serializers import EventSerializer,EventSummarySerializer,UserAcctEvSerializar,EventTicketSerializer
+from .serializers import EventSerializer,EventSummarySerializer,UserAcctEvSerializar,EventTicketSerializer,EventVideoSerializer
 
 from rest_framework.permissions import IsAuthenticated
 
 import datetime
 
+from django.db.models import Count
 class EventListDateView(ListAPIView):
     nowdatetime = datetime.datetime.now()#obteniendo datetime actual
     queryset = Event.objects.order_by('date_event').filter(date_event__gte=nowdatetime)
@@ -25,7 +26,7 @@ class EventDetailView(RetrieveAPIView):
 class EventVideoDetailView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
-    serializer_class = EventSerializer
+    serializer_class = EventVideoSerializer
 
 #------------------------------models---------------------------
 
@@ -39,26 +40,12 @@ class UserEventList (RetrieveUpdateDestroyAPIView):
     serializer_class = UserAcctEvSerializar
 
 
-class TicketListView(ListAPIView):
-    #permission_classes = (IsAuthenticated,)
-    serializer_class = UserAcctEvSerializar
-    def get_queryset(self):
-        urs_id = self.kwargs['User_id']
-        tk = UserAccountEvent.objects.filter(User_id__exact=urs_id)
-        lista=[]
-        for k in tk:
-            print(k)
-            lista.append(k)
-        return lista#UserAccountEvent.objects.filter(User_id__exact=urs_id)
-
-
 class TicketEventListView(ListAPIView):
     serializer_class = EventSerializer
     def get_queryset(self):
         id= self.kwargs['User_id']
-        user=UserAccount.objects.get(pk=id)
-        return user.event_set.all().order_by('date_event')
-
+        return Event.objects.values('id','title','content','date_created','date_event','costo','description','url','thumbnail','category').annotate(count=Count('id')).filter(accounts__id__exact=id)
+        #return user.event_set.all().order_by('date_event')
 
 class TicketRelaListView(ListAPIView):
      #queryset = Event.objects.all()

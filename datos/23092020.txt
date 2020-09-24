@@ -1,0 +1,16 @@
+costo en detalles:
+resaltar costo,y boton de compra
+
+--resaltar titulo, mas grande.
+
+---centrado del video 
+
+--------------------------------------------
+mis eventos
+*agrupamiento
+*agregar fecha de compra de ticket
+*una mas visible,tomar referencia cartelera de cine.
+---------------------------------------------
+6 imágenes.
+carrusel de carga de imagenes(comercial o eventos)
+*link con su evento o promoción.

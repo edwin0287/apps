@@ -26,7 +26,6 @@ const IconText = ({ icon, text }) => (
 
     try{
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/ticket/`, body, config);
-        console.log(res);
     
     } catch(err){
 
