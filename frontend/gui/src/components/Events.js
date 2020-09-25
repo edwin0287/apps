@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import { List,Space, Col,Button,Card,Carousel} from 'antd';
+import { List,Space, Col,Button,Card,Carousel,Image } from 'antd';
 import { Link,useHistory } from 'react-router-dom';
 import Modal from 'antd/lib/modal/Modal';
 import store from '../store';
@@ -71,31 +71,34 @@ const Events = (props)=>{
         setVisible(false);
       }
     
-   /* const contentStyle = {
-        height: '60px',
-        with: '500px',
+    const contentStyle = {
+        height: '100%',
+        width: '100%',
         color: '#fff',
         lineHeight: '160px',
-        Align: 'center',
+        textAlign: 'center',
         background: '#364d79',
     };
-    <Carousel autoplay>
-    <div style={contentStyle} >
-        <img  alt="example1" src="http://localhost:8000/media/photos/2020/09/19/lark.PNG" />
-    </div>
-    <div style={contentStyle}>
-        <img alt="example2" src="http://localhost:8000/media/photos/2020/09/19/cory.PNG" />
-    </div>
-    <div style={contentStyle}>
-       <img alt="example3" src="http://localhost:8000/media/photos/2020/09/19/Tumm.PNG" />
-    </div>
-    <div style={contentStyle}>
-        <img alt="example4" src="http://localhost:8000/media/photos/2020/09/19/catlive.PNG"/>
-    </div>
-    </Carousel>*/
+    const imgStyle = {
+        width: '100%',
+        height:'100%'
+      };
     return(    
        <> 
-            
+            <Carousel autoplay>
+                <div style={contentStyle} >
+                    <Image style={imgStyle} alt="example1" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-23.jpg" />
+                </div>
+                <div style={contentStyle}>
+                    <Image style={imgStyle} alt="example2" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-16.jpg" />
+                </div>
+                <div style={contentStyle}>
+                <Image style={imgStyle} alt="example3" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-10.jpg" />
+                </div>
+                <div style={contentStyle}>
+                    <Image style={imgStyle} alt="example4" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-6.jpg"/>
+                </div>
+            </Carousel>
             <h2>CARTELERA</h2>
             <List
                 grid={{
