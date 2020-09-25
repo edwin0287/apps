@@ -87,16 +87,16 @@ const Events = (props)=>{
        <> 
             <Carousel autoplay>
                 <div style={contentStyle} >
-                    <Image style={imgStyle} alt="example1" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-23.jpg" />
+                    <Image style={imgStyle} alt="example1" src="http://localhost:8000/media/photos/2020/09/21/electronic.jpg" />
                 </div>
                 <div style={contentStyle}>
-                    <Image style={imgStyle} alt="example2" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-16.jpg" />
+                    <Image style={imgStyle} alt="example2" src="http://localhost:8000/media/photos/2020/09/21/larkonline.jpg" />
                 </div>
                 <div style={contentStyle}>
-                <Image style={imgStyle} alt="example3" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-10.jpg" />
+                <Image style={imgStyle} alt="example3" src="http://localhost:8000/media/photos/2020/09/21/ChromaCat.jpg" />
                 </div>
                 <div style={contentStyle}>
-                    <Image style={imgStyle} alt="example4" src="http://localhost:8000/media/photos/2020/09/21/Banner-img-6.jpg"/>
+                    <Image style={imgStyle} alt="example4" src="http://localhost:8000/media/photos/2020/09/21/corey.jpg"/>
                 </div>
             </Carousel>
             <h2>CARTELERA</h2>
