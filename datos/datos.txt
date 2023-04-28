@@ -1,14 +1,29 @@
+
+atajo para estructura programando componentes react frontend
+rafc
+
+
+
 TeatroWeb
 web.
 usurario de adminitrador
 -----------------------------
 crear pagina para mostrar eventos a comprar.
 -------------------------------------------
-react y django
+react y django postgresql10
 -------------------------------------------
 usuarios:
 admin, publico, artista.
 -------------------------------------------
+mail: edwin02_87@hotmail.es
+contraseña: teatro2023
+
+mail:urrunaga87@yahoo.es
+contraseña:admin2020
+
+mail:edwin.urrunaga@gbit2023
+contraseña:gbit2023
+
 1-Iniciamos creando usuarios
 
 
@@ -43,3 +58,34 @@ https://www.youtube.com/watch?v=-HuTlmEVOgU
 
 
 https://www.youtube.com/watch?v=Nb7il0Q5WoY&t=3066s
+
+--Iniciando con un clon del proceso
+--backend
+1- Clonar el proyecto
+2- Se abre el proyecto con visual code se abre la terminal y se entra a la ruta C:\teatro\apps\backend
+3- se crea directorio virtual: para crearlo:
+
+    python -m venv nombre (en la carpeta del proyecto)
+
+
+     .\venv\Scripts\activate
+
+     deactivate
+4- Después de activar se instala los requerimientos: pip install -r requirements.txt
+5- Entramos a la ruta src (que es el proyecto)
+6- python manage.py migrate, python manage.py runserver(Como último paso después de ejecutar el frontend)
+
+--Frontend
+En otra terminal desde visual code
+1- Entramos a C:\teatro\apps\frontend\gui y ejecutamos npm install, para cargar todo lo del archivo .json, validar que aparezca la carpeta node_modules
+
+2- ejecutar npm run build, para que aparezca la carpeta build.
+3- colocar la carpeta buil en la ruta C:\teatro\apps\backend\src
+que es accedida por 'DIRS': [os.path.join(BASE_DIR, 'build')],, en template del archivo settigs.py ubicado C:\teatro\apps\backend\src\theater
+
+4-ahora si correr python manage.py runserver en la terminal del backend
+
+----fin----
+Para acceder al admin, entramos al localhost + /admin/ como esta definido en urls.py ubicado en C:\teatro\apps\backend\src\theater
+
+--Verificar además que tu cuenta de correo, para envios este bien configurada, de lo contrario no se podrá enviar los correos

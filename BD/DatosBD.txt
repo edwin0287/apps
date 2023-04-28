@@ -1,0 +1,12 @@
+1- Se saca backup, por medio de phgadmin
+2- Se accede por medio de la consola para crear la bd donde se hará el restore, usando estos comandos
+  2.1: Entras usando el usuario y la contraseña postgres
+
+comandos:
+ \l (lista las bases de datos)
+ \c basededatos (accedes a cualquien base de datos)
+ \dt (listas detalles de la base de datos)
+create database nombredebd(crea una base de datos)
+
+tamaño de las bases de datos
+ select pg_database.datname,pg_size_pretty(pg_database_size(pg_database.datname))AS SIZE from pg_database;
